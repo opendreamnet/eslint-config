@@ -1,0 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "eslint-config",
+
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:22-bullseye",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+    "vscode": {
+      "extensions": [
+        // OpenDreamnet
+        "EditorConfig.EditorConfig",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "sleistner.vscode-fileutils",
+        "github.vscode-github-actions",
+        "mutantdino.resourcemonitor",
+        "christian-kohler.path-intellisense",
+        "chrisdias.vscode-opennewinstance",
+        "Tyriar.lorem-ipsum",
+        "soerenuhrbach.vscode-deepl"
+	    ]
+    }
+	}
+}

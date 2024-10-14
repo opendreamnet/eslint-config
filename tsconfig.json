@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "@tsconfig/node-lts/tsconfig.json",
+    "@tsconfig/strictest/tsconfig.json"
+  ],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "outDir": "dist"
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}
