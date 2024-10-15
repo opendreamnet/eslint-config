@@ -1,5 +1,15 @@
 
 
+## [0.3.1](https://github.com/opendreamnet/eslint-config/compare/0.3.0...0.3.1) (2024-10-15)
+
+
+### Bug Fixes
+
+* **ci:** added `corepack enable` ([4c49abd](https://github.com/opendreamnet/eslint-config/commit/4c49abddd4e591fd2e64a53074a11946d5274b4a))
+* **ci:** added missing build step ([dd66ee6](https://github.com/opendreamnet/eslint-config/commit/dd66ee6c4340e3b125f96429cc128233b8af2efd))
+* **ci:** removed `yarn.lock` from `.gitignore` ([2c555e2](https://github.com/opendreamnet/eslint-config/commit/2c555e21b64623bf3fd9f6d421d85c499e4230bd))
+* removed `yarnrc.yml` from `.gitignore` ([e383ee8](https://github.com/opendreamnet/eslint-config/commit/e383ee8334f1428c81df1b8c6bce5800a10fd2bb))
+
 # 0.3.0 (2024-10-14)
 
 # Changelog
