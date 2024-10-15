@@ -1,11 +1,13 @@
 {
   "$schema": "https://unpkg.com/release-it@17/schema/release-it.json",
   "git": {
-    "commitMessage": "chore(release): ${version}",
-    "tagAnnotation": "v${version}"
+    "commitMessage": "chore(release): v${version}",
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": false
   },
   "github": {
-    "release": true
+    "release": true,
+    "releaseName": "v${version}"
   },
   "npm": {
     "skipChecks": true,
