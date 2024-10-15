@@ -31,7 +31,10 @@ jobs:
       - name: 👨🏻‍💻 Install Dependencies
         run: yarn install --inline-builds --immutable
 
+      - name: 🏗️ Build
+        run: yarn run build
+
       - name: 🚀 Publish
-        run: yarn npm publish --access public
+        run: yarn npm publish --access public --tolerate-republish
         env:
           YARN_NPM_AUTH_TOKEN: ${{ env.NPM_AUTH_TOKEN }}
