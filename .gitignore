@@ -36,7 +36,6 @@ pnpm-debug.log*
 # Yarn v4 Plug'n'Play
 .pnp.*
 .pnp.loader.mjs
-.yarnrc.yml
 
 # Test coverage reports
 coverage
