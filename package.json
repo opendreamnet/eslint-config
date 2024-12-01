@@ -11,14 +11,13 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "packageManager": "yarn@4.5.0",
   "scripts": {
     "release": "release-it",
     "deploy": "git push --follow-tags origin main",
-    "upgrade": "yarn dlx npm-check-updates -i",
+    "upgrade": "pnpm dlx npm-check-updates -i",
     "build": "tsc",
     "watch": "tsc -w",
-    "inspect": "yarn dlx @eslint/config-inspector@latest",
+    "inspect": "pnpm dlx @eslint/config-inspector@latest",
     "test": "eslint tests --config eslint.config.js"
   },
   "author": {

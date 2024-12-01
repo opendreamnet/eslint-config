@@ -79,3 +79,6 @@ jspm_packages/
 *.gz
 *.log.gz
 node_modules
+
+# pnpm
+.pnpm-store
