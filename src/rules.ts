@@ -238,9 +238,6 @@ export const RULES: TSESLint.FlatConfig.Rules = {
   'no-useless-return': [
     'error',
   ],
-  'no-void': [
-    'error',
-  ],
   'one-var': [
     'error',
     {
@@ -264,4 +261,13 @@ export const RULES: TSESLint.FlatConfig.Rules = {
     'error',
     'never',
   ],
+
+  'import/no-unresolved': 'off',
+  'n/no-missing-import': 'off',
+  '@typescript-eslint/no-base-to-string': 'off',
+  '@typescript-eslint/restrict-template-expressions': ['error', {
+    allowAny: true,
+  }],
+  '@typescript-eslint/no-unsafe-call': 'off',
+  'no-void': 'off',
 }

@@ -1,15 +1,17 @@
 import { Linter } from 'eslint'
 import eslint from '@eslint/js'
 import nodePlugin from 'eslint-plugin-n'
-// @ts-ignore
+// @ts-expect-error The package has no types.
 import importPlugin from 'eslint-plugin-import'
-// @ts-ignore
+// @ts-expect-error The package has no types.
 import promisePlugin from 'eslint-plugin-promise'
 import stylisticPlugin from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 import { RULES } from './rules.js'
 
-export const recommended = {
+export { Linter }
+
+export const recommended: Linter.Config = {
   name: 'opendreamnet/eslint-config',
 
   languageOptions: {
@@ -28,20 +30,22 @@ export const recommended = {
   },
 
   rules: RULES,
-} satisfies Linter.Config
+}
 
 export const config = tseslint.config(
   {
-    ignores: ['node_modules/**']
+    ignores: ['node_modules/**'],
   },
   eslint.configs.recommended,
   nodePlugin.configs['flat/recommended'],
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   importPlugin.flatConfigs.recommended,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   promisePlugin.configs['flat/recommended'],
   stylisticPlugin.configs['recommended-flat'],
-  recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  recommended,
 )
 
 export default config
