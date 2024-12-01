@@ -1,7 +1,7 @@
 {
   "name": "@opendreamnet/eslint-config",
   "description": "ESLint config for OpenDreamnet projects.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "type": "module",
   "exports": {
