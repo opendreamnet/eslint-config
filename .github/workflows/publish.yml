@@ -35,6 +35,9 @@ jobs:
         run: pnpm build
 
       - name: 🚀 Publish
-        run: pnpm publish --access public
         env:
           NPM_AUTH_TOKEN: ${{ env.NPM_AUTH_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
+          echo "@opendreamnet:registry=https://registry.npmjs.org/" >> ~/.npmrc
+          pnpm publish --access public
