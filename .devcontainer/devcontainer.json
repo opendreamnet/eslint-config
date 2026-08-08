@@ -4,7 +4,7 @@
 	"name": "eslint-config",
 
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:22-bullseye",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:24-trixie",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
@@ -18,7 +18,6 @@
       "extensions": [
         // OpenDreamnet
         "EditorConfig.EditorConfig",
-        "VisualStudioExptTeam.vscodeintellicode",
         "sleistner.vscode-fileutils",
         "github.vscode-github-actions",
         "mutantdino.resourcemonitor",

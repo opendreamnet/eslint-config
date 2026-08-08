@@ -1,7 +1,7 @@
 import { Linter } from 'eslint'
+import { defineConfig } from 'eslint/config'
 import eslint from '@eslint/js'
 import nodePlugin from 'eslint-plugin-n'
-// @ts-expect-error The package has no types.
 import importPlugin from 'eslint-plugin-import'
 // @ts-expect-error The package has no types.
 import promisePlugin from 'eslint-plugin-promise'
@@ -32,7 +32,7 @@ export const recommended: Linter.Config = {
   rules: RULES,
 }
 
-export const config = tseslint.config(
+export const config = defineConfig(
   {
     ignores: ['node_modules/**'],
   },
