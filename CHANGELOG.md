@@ -1,4 +1,18 @@
+# Changelog
 
+# [0.4.0](https://github.com/opendreamnet/eslint-config/compare/v0.3.2...v0.4.0) (2026-10-18)
+
+### Bug Fixes
+
+* **ci:** added `packageManager` ([d85801c](https://github.com/opendreamnet/eslint-config/commit/d85801c3667b40fe6bc847f4b3c873a540e53063))
+* **ci:** possible fix for publish workflow ([c9b3c7d](https://github.com/opendreamnet/eslint-config/commit/c9b3c7dcc6ee9b66e89c9ac0777d1709aa69cc08))
+* **ci:** possible fix for publish workflow ([0f17648](https://github.com/opendreamnet/eslint-config/commit/0f176482d83cdff40bcb47d73bb97f718595395d))
+* **ci:** possible fix for publish workflow ([ebb8f36](https://github.com/opendreamnet/eslint-config/commit/ebb8f36a78492e18944c689e413253e711c494a9))
+* **ci:** wrong `packageManager` ([584a83e](https://github.com/opendreamnet/eslint-config/commit/584a83ecea5673829f15eae74cc8f367838f79d8))
+
+### Features
+
+* expand ESLint config for Vue, Prettier, and Unicorn ([f84b6f9](https://github.com/opendreamnet/eslint-config/commit/f84b6f90b967f864e5a772080d3aa6756de475f0))
 
 ## [0.3.2](https://github.com/opendreamnet/eslint-config/compare/0.3.1...v0.3.2) (2024-12-01)
 
@@ -36,7 +50,7 @@
 
 # 0.3.0 (2024-10-14)
 
-# Changelog
+
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
