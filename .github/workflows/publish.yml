@@ -1,43 +1,50 @@
+name: Publish on NPM
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   push:
-    tags: [ v* ]
+    tags: [v*]
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   publish:
-    name: publish on NPM
+    name: Publish on NPM
     runs-on: ubuntu-latest
 
     steps:
       - name: 📁 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: 🔑 Load 1Password Secrets
-        uses: 1password/load-secrets-action@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: ⚙️ Install Node.js LTS
+        uses: actions/setup-node@v7
         with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          NPM_AUTH_TOKEN: "op://xen65q6xejmrcafvgdfso4lyu4/NPM Token/credential"
+          node-version: lts/*
+          scope: "@opendreamnet"
+          check-latest: true
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
-      - name: ⚙️ Install Node.js 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: 👨🏻‍💻 Install Dependencies
+      - name: 👨🏻‍💻 Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: 🏗️ Build
         run: pnpm build
 
-      - name: 🚀 Publish
-        env:
-          NPM_AUTH_TOKEN: ${{ env.NPM_AUTH_TOKEN }}
+      - name: ✅ Validate
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ~/.npmrc
-          echo "@opendreamnet:registry=https://registry.npmjs.org/" >> ~/.npmrc
-          pnpm publish --access public
+          pnpm test
+          pnpm typecheck
+          pnpm pack --dry-run
+
+      - name: 🚀 Publish
+        run: pnpm publish
