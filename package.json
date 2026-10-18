@@ -26,6 +26,9 @@
     "name": "Ivan Bravo Bravo",
     "email": "ivan@opendreamnet.com"
   },
+  "repository": {
+    "url": "git+https://github.com/opendreamnet/eslint-config.git"
+  },
   "files": [
     "dist"
   ],
