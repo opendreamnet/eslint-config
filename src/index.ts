@@ -1,51 +1,108 @@
-import { Linter } from 'eslint'
-import { defineConfig } from 'eslint/config'
-import eslint from '@eslint/js'
-import nodePlugin from 'eslint-plugin-n'
-import importPlugin from 'eslint-plugin-import'
-// @ts-expect-error The package has no types.
-import promisePlugin from 'eslint-plugin-promise'
-import stylisticPlugin from '@stylistic/eslint-plugin'
+import type { TSESLint } from '@typescript-eslint/utils'
+import { ESLint } from 'eslint'
+import { defineConfig as defineEslintConfig } from 'eslint/config'
+
+import js from '@eslint/js'
+import pluginPromise from 'eslint-plugin-promise'
+import { importX } from 'eslint-plugin-import-x'
+import pluginVue from 'eslint-plugin-vue'
+import stylistic from '@stylistic/eslint-plugin'
+import unicorn from 'eslint-plugin-unicorn'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import tseslint from 'typescript-eslint'
 import { RULES } from './rules.js'
 
-export { Linter }
+export { RULES }
 
-export const recommended: Linter.Config = {
-  name: 'opendreamnet/eslint-config',
+type ConfigWithExtendsArray = Parameters<typeof defineEslintConfig>
 
-  languageOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    parserOptions: {
-      projectService: true,
-      tsconfigRootDir: import.meta.dirname,
-    },
+/**
+Default list of files to include
+*/
+export const INCLUDE_LIST = ['**/*.{js,ts,vue}']
 
-    globals: {
-      document: 'readonly',
-      navigator: 'readonly',
-      window: 'readonly',
-    },
-  },
+/**
+List of files that must be ignored globally
+*/
+export const GLOBAL_IGNORE_LIST = [
+  'eslint.config.js',
+  'eslint.config.ts',
+  '*.min.*',
+  '*.d.ts',
+  'CHANGELOG.md',
+  'dist/**',
+  'LICENSE*',
+  'output/**',
+  'coverage/**',
+  'temp/**',
+  'build/**',
+  '.yalc/**',
+  'pnpm-lock.yaml',
+  'yarn.lock',
+  'package-lock.json',
+  'node_modules/**',
+]
 
-  rules: RULES,
+/**
+Default set of plugins to apply to the config
+*/
+export const PLUGINS_LIST: Record<string, ESLint.Plugin> = {
+  unicorn,
+  stylistic,
+  js,
 }
 
-export const config = defineConfig(
-  {
-    ignores: ['node_modules/**'],
-  },
-  eslint.configs.recommended,
-  nodePlugin.configs['flat/recommended'],
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  importPlugin.flatConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  promisePlugin.configs['flat/recommended'],
-  stylisticPlugin.configs['recommended-flat'],
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
-  recommended,
-)
+export const RULES_VUE: TSESLint.FlatConfig.Rules = {
+  'unicorn/no-null': 'off',
+}
 
-export default config
+export function defineConfig(...configs: ConfigWithExtendsArray) {
+  return defineEslintConfig(
+    { ignores: GLOBAL_IGNORE_LIST },
+
+    {
+      name: 'Plugins list',
+      plugins: { ...PLUGINS_LIST },
+    },
+
+    js.configs.recommended,
+
+    {
+      name: 'typescript-eslint',
+      extends: [
+        tseslint.configs.strictTypeChecked,
+        tseslint.configs.stylisticTypeChecked,
+      ],
+      languageOptions: {
+        parserOptions: {
+          projectService: true,
+        },
+      },
+    },
+
+    importX.flatConfigs.recommended,
+    importX.flatConfigs.typescript,
+
+    unicorn.configs.recommended,
+
+    pluginVue.configs['flat/recommended'],
+    // @ts-expect-error Unknown package error
+    pluginPromise.configs['flat/recommended'],
+
+    {
+      name: 'opendreamnet/eslint-config',
+      files: INCLUDE_LIST,
+      rules: RULES,
+    },
+
+    {
+      name: 'opendreamnet/eslint-config',
+      files: ['**/*.vue'],
+      rules: RULES_VUE,
+    },
+
+    ...configs,
+
+    eslintPluginPrettierRecommended
+  )
+}

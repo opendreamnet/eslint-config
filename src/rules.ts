@@ -1,8 +1,7 @@
-// eslint-disable-next-line n/no-extraneous-import
 import type { TSESLint } from '@typescript-eslint/utils'
 
 export const RULES: TSESLint.FlatConfig.Rules = {
-  'import/order': [
+  'import-x/order': [
     'error',
     {
       groups: [
@@ -17,10 +16,8 @@ export const RULES: TSESLint.FlatConfig.Rules = {
       ],
     },
   ],
-  'import/first': [
-    'error',
-  ],
-  'import/no-absolute-path': [
+  'import-x/first': ['error'],
+  'import-x/no-absolute-path': [
     'error',
     {
       esmodule: true,
@@ -28,72 +25,22 @@ export const RULES: TSESLint.FlatConfig.Rules = {
       amd: false,
     },
   ],
-  'import/no-webpack-loader-syntax': [
-    'error',
-  ],
-  'n/handle-callback-err': [
-    'error',
-    '^(err|error)$',
-  ],
-  'n/no-callback-literal': [
-    'error',
-  ],
-  'n/no-new-require': [
-    'error',
-  ],
-  'n/no-path-concat': [
-    'error',
-  ],
-  '@stylistic/func-call-spacing': [
-    'error',
-    'never',
-  ],
-  '@stylistic/generator-star-spacing': [
-    'error',
-    {
-      before: true,
-      after: true,
-    },
-  ],
-  '@stylistic/object-curly-newline': [
-    'error',
-    {
-      multiline: true,
-      consistent: true,
-    },
-  ],
-  '@stylistic/object-property-newline': [
-    'error',
-    {
-      allowMultiplePropertiesPerLine: true,
-      allowAllPropertiesOnSameLine: false,
-    },
-  ],
-  '@typescript-eslint/no-use-before-define': [
-    'error',
-  ],
-  '@typescript-eslint/method-signature-style': [
-    'error',
-  ],
+  'import-x/no-webpack-loader-syntax': ['error'],
+  'import-x/no-named-as-default-member': 'off',
+
+  '@typescript-eslint/no-use-before-define': ['error'],
+  '@typescript-eslint/method-signature-style': ['error'],
   '@typescript-eslint/naming-convention': [
     'error',
     {
       selector: 'variableLike',
       leadingUnderscore: 'allow',
       trailingUnderscore: 'allow',
-      format: [
-        'camelCase',
-        'PascalCase',
-        'UPPER_CASE',
-      ],
+      format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
     },
   ],
-  '@typescript-eslint/prefer-readonly': [
-    'error',
-  ],
-  '@typescript-eslint/promise-function-async': [
-    'error',
-  ],
+  '@typescript-eslint/prefer-readonly': ['error'],
+  '@typescript-eslint/promise-function-async': ['error'],
   '@typescript-eslint/require-array-sort-compare': [
     'error',
     {
@@ -113,10 +60,7 @@ export const RULES: TSESLint.FlatConfig.Rules = {
     },
   ],
 
-  'object-shorthand': [
-    'error',
-    'properties',
-  ],
+  'object-shorthand': ['error', 'properties'],
   'array-callback-return': [
     'error',
     {
@@ -128,19 +72,11 @@ export const RULES: TSESLint.FlatConfig.Rules = {
   'camelcase': [
     'error',
     {
-      allow: [
-        '^UNSAFE_',
-      ],
+      allow: ['^UNSAFE_'],
       properties: 'never',
     },
   ],
-  'curly': [
-    'error',
-    'multi-line',
-  ],
-  'default-case-last': [
-    'error',
-  ],
+  'default-case-last': ['error'],
   'eqeqeq': [
     'error',
     'always',
@@ -148,6 +84,7 @@ export const RULES: TSESLint.FlatConfig.Rules = {
       null: 'never',
     },
   ],
+  'max-params': ['error', { max: 4 }],
   'new-cap': [
     'error',
     {
@@ -156,88 +93,38 @@ export const RULES: TSESLint.FlatConfig.Rules = {
       properties: true,
     },
   ],
-  'no-caller': [
-    'error',
-  ],
-  'no-eval': [
-    'error',
-  ],
-  'no-extend-native': [
-    'error',
-  ],
-  'no-extra-bind': [
-    'error',
-  ],
-  'no-iterator': [
-    'error',
-  ],
-  'no-labels': [
-    'error',
-  ],
-  'no-lone-blocks': [
-    'error',
-  ],
-  'no-multi-str': [
-    'error',
-  ],
-  'no-new': [
-    'error',
-  ],
-  'no-new-func': [
-    'error',
-  ],
-  'no-new-wrappers': [
-    'error',
-  ],
-  'no-octal-escape': [
-    'error',
-  ],
-  'no-proto': [
-    'error',
-  ],
-  'no-return-assign': [
-    'error',
-    'except-parens',
-  ],
-  'no-self-compare': [
-    'error',
-  ],
-  'no-sequences': [
-    'error',
-  ],
-  'no-template-curly-in-string': [
-    'error',
-  ],
-  'no-undef-init': [
-    'error',
-  ],
-  'no-unmodified-loop-condition': [
-    'error',
-  ],
+  'no-caller': ['error'],
+  'no-eval': ['error'],
+  'no-extend-native': ['error'],
+  'no-extra-bind': ['error'],
+  'no-iterator': ['error'],
+  'no-labels': ['error'],
+  'no-lone-blocks': ['error'],
+  'no-multi-str': ['error'],
+  'no-new': ['error'],
+  'no-new-func': ['error'],
+  'no-new-wrappers': ['error'],
+  'no-octal-escape': ['error'],
+  'no-proto': ['error'],
+  'no-return-assign': ['error', 'except-parens'],
+  'no-self-compare': ['error'],
+  'no-sequences': ['error'],
+  'no-template-curly-in-string': ['error'],
+  'no-undef-init': ['error'],
+  'no-unmodified-loop-condition': ['error'],
   'no-unneeded-ternary': [
     'error',
     {
       defaultAssignment: false,
     },
   ],
-  'no-nested-ternary': [
-    'error',
-  ],
-  'no-unreachable-loop': [
-    'error',
-  ],
-  'no-useless-call': [
-    'error',
-  ],
-  'no-useless-computed-key': [
-    'error',
-  ],
-  'no-useless-rename': [
-    'error',
-  ],
-  'no-useless-return': [
-    'error',
-  ],
+  'no-nested-ternary': ['error'],
+  'no-unreachable-loop': ['error'],
+  'no-useless-call': ['error'],
+  'no-useless-computed-key': ['error'],
+  'no-useless-rename': ['error'],
+  'no-useless-return': ['error'],
+  'func-style': ['warn', 'declaration'],
   'one-var': [
     'error',
     {
@@ -250,24 +137,19 @@ export const RULES: TSESLint.FlatConfig.Rules = {
       disallowRedundantWrapping: true,
     },
   ],
-  'symbol-description': [
-    'error',
-  ],
-  'unicode-bom': [
-    'error',
-    'never',
-  ],
-  'yoda': [
-    'error',
-    'never',
-  ],
+  'symbol-description': ['error'],
+  'unicode-bom': ['error', 'never'],
+  'yoda': ['error', 'never'],
 
-  'import/no-unresolved': 'off',
-  'n/no-missing-import': 'off',
+  'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
+
+  'import-x/no-unresolved': 'off',
+
   '@typescript-eslint/no-base-to-string': 'off',
-  '@typescript-eslint/restrict-template-expressions': ['error', {
-    allowAny: true,
-  }],
-  '@typescript-eslint/no-unsafe-call': 'off',
-  'no-void': 'off',
+  '@typescript-eslint/restrict-template-expressions': [
+    'error',
+    {
+      allowAny: true,
+    },
+  ],
 }

@@ -1,8 +1,7 @@
-import config from './dist/index.js'
+import { defineConfig } from './dist/index.js'
 
-export default [
-  ...config,
+export default defineConfig(
   {
-    ignores: ['dist/**']
-  }
-]
+    ignores: ['dist/**'],
+  },
+)
