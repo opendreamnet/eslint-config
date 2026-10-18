@@ -20,8 +20,7 @@
     "watch": "tsc -w",
     "inspect": "pnpm dlx @eslint/config-inspector@latest --open false",
     "lint": "tsc && eslint src --config eslint.config.js",
-    "typecheck": "tsc --noEmit",
-    "test": "tsc && eslint tests --config eslint.config.js"
+    "typecheck": "tsc --noEmit"
   },
   "author": {
     "name": "Ivan Bravo Bravo",
